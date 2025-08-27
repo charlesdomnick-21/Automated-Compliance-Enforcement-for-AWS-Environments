@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing AWS CLI"
+      - pip install --upgrade pip
+      - pip install awscli
+  pre_build:
+    commands:
+      - echo "Pre-build phase complete"
+  build:
+    commands:
+      - echo "Running remediation script"
+      - ./remediate_s3_versioning.sh
+  post_build:
+    commands:
+      - echo "Build phase complete"
+
